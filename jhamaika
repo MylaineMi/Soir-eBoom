@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOIRÉBOOM</title>
+    <style>
+         :root {
+            --bg-color: #ffffff; /* Couleur de fond par défaut */
+            --text-color: #000000; /* Couleur du texte par défaut */            
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .theme-controls {
+            text-align: center;
+            margin: 20px 0;
+        }                
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+            margin: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 19px;
+            width: 19px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #007BFF;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(25px);
+        }
+        }
+        h5 {
+           font-size: 40px        
+        }
+        h1 {
+            color: #ce00ff;
+            text-align: center;
+        }
+        h2 {
+            color: #fff100;
+            text-align: center;
+        }
+        h3 {
+            color: #3bff00;
+        }
+        .histo {
+            width: 408px;
+            height: 60px;
+            background-color: #eeff95;
+            color: #ff0a00;
+            border-style: double;
+            border-color: #ff5540;
+            font-size: 35px;
+        }
+        u {
+            color: #3b00ff;
+            
+        }
+        p {
+            font-size: 15px;
+        }
+        i {
+            color: #3b00ff;
+            text-align: right;
+        }
+        footer {
+            Background-color: #ff7300;
+            color: white;
+            text-align: center;
+        }
+        .projector {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%);
+            animation: moveLights 2s infinite alternate;
+        }
+
+        .light {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 70%, transparent 100%);
+            border-radius: 50%;
+            animation: flicker 2s infinite ease-in-out;
+        }
+
+        .light:nth-child(1) {
+            top: 80%;
+            left: 0%;
+            animation-delay: 0.5s;
+        }
+
+        .light:nth-child(2) {
+            top: 50%;
+            left: 51%;
+            animation-delay: 1s;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveLights {
+            0% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 40% 60%;
+            }
+        }
+        .img2 {
+            width: 20px;
+            height: 20px;
+        }
+        .button1 {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: white;
+            border: double;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffc700;
+        }
+        .btn {
+      position: fixed;
+      width: 160px;
+      height: 60px;
+      background-color: #008cba;
+      color: white;
+      border: 5;
+      cursor: pointer;
+      font-size: 35px;
+      border-radius: 5px;
+      z-index: 0; /* Toujours au-dessus */
+    }
+        av {
+            color: #1577ff;
+        }
+        kel {
+            color: #ff5e00;
+        }
+        ai {
+            color: #55d5ff;
+        }
+        bi {
+            color: #ffe76a;
+        }
+        ma {
+            color: #ce00ff;
+        }
+        ps {
+            color: #ffa995;
+        }
+        ml {
+            color: #95ffb7;
+        }
+        ri {
+            color: #ff6915;
+        }
+        nr {
+            color: #ff809f;
+        }
+        mk {
+            color: #3bff00;
+        }
+        mi {
+            color: #cfff80;
+        }
+        .histo {
+            width: 400px;
+        }
+        .highlight {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .efface {
+            padding: 10px 15px;
+            margin-left: 5px;
+            background-color: #ff5e00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .drawer {
+      position: fixed;
+      top: -300px; /* Caché par défaut */
+      left: 0;
+      width: 100%;
+      height: 300px;
+      background: #f4f4f4;
+      border-bottom: 2px solid #ccc;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .drawer.open {
+      transform: translateY(300px); /* Position ouverte */
+      color: black;
+    }
+
+    .handle {
+      width: 50px;
+      height: 5px;
+      background: #aaa;
+      border-radius: 5px;
+      margin: 10px auto;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .buttons {
+      margin: 0px;
+      position: fixed;
+      left: 66.40%;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #999999;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background: #0056b3;
+    }
+    h {
+        font-size: 20px;
+    }
+    .Saison {
+        background-color: #920c48;
+    }
+    </style>
+</head>
+<body>
+    <form action="http://localhost:8080/Inscription.html">
+    <button class="btn" type="submit">&#x2635;Accueil</button>
+    </form>
+    </div>
+    <div class="theme-controls">
+    <div class="drawer" id="drawer">
+    <div class="handle"></div>
+    <div class="content">
+      <p>Contenu du tiroir</p>
+      <h1>Personnalisez le Thème</h1>
+
+        <!-- Bouton pour mode sombre -->
+        <label for="darkModeSwitch">Mode Sombre</label>
+        <label class="switch">
+            <input type="checkbox" id="darkModeSwitch" onchange="toggleDarkMode(this)">
+            <span class="slider"></span>
+        </label>
+
+        <br>
+
+        <!-- Sélecteur de couleur pour le texte -->
+        <label for="textColor">Changer la couleur du texte :</label>
+        <input type="color" id="textColor" value="#ffffff" onchange="changeTextColor(this.value)">
+        </div>
+        
+      <button id="closeButton">Fermer</button>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button id="openButton">Paramètres</button>
+  </div>    
+
+  <script>
+    const drawer = document.getElementById('drawer');
+    const openButton = document.getElementById('openButton');
+    const closeButton = document.getElementById('closeButton');
+
+    openButton.addEventListener('click', () => {
+      drawer.classList.add('open');
+    });
+
+    closeButton.addEventListener('click', () => {
+      drawer.classList.remove('open');
+    });
+  </script>
+  <script>
+        // Basculer entre mode sombre et mode original
+        function toggleDarkMode(checkbox) {
+            if (checkbox.checked) {
+                document.documentElement.style.setProperty('--bg-color', '#000000');
+                document.documentElement.style.setProperty('--text-color', 'white');
+            } else {
+                document.documentElement.style.setProperty('--bg-color', '#FFFFFF');
+                document.documentElement.style.setProperty('--text-color', '#000000');
+            }
+        }
+
+        // Changer la couleur du texte
+        function changeTextColor(color) {
+            document.documentElement.style.setProperty('--text-color', color);
+        }
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <h>Recherche des mots interne</h>
+    </center>
+    <div class="search-bar">
+        <input type="text" placeholder="Rechercher un mot ou une phrase..." id="searchInput">
+        <button onclick="highlightText()">Rechercher</button>
+        <button class="efface" onclick="clearHighlights()">Effacer</button>
+    </div>
+    <br>
+    <script>
+        function highlightText() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) {
+                alert('Veuillez entrer un terme de recherche.');
+                return;
+            }
+
+            const content = document.getElementById('content');
+            const regex = new RegExp(`(${query})`, 'gi');
+            const originalText = content.innerHTML;
+
+            content.innerHTML = originalText.replace(/<span class="highlight">|<\/span>/g, ''); // Efface les anciennes surbrillances
+            content.innerHTML = content.innerHTML.replace(regex, '<span class="highlight">$1</span>'); // Ajoute les nouvelles
+        }
+
+        function clearHighlights() {
+            const content = document.getElementById('content');
+            content.innerHTML = content.innerHTML.replace(/<span class="highlight">|<\/span>/g, ''); // Supprime les balises de surbrillance
+            document.getElementById('searchInput').value = ''; // Efface le champ de recherche
+        }
+    </script>
+    <center>
+    <video prelood="0" poster="SOIREEBOOM.jpg" width="408px"></video>
+    </center>
+    <div id="content">
+<u><h1>SAISON 1</h1></u>
+<div class="projector">
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+<u><h2>Episode 1</h2></u>
+<br>
+<br>
+ <button class="histo">✰ Il y a très longtemps</button>
+
+<h3>✰ Ankizy milalao </h3>
+
+<kel>Kelvin</kel> : Elah ve letsy hilalao miaraka aminay
+<br>
+<av>Avel</av> : Ye
+<br>
+<kel>Kelvin</kel> : Mitsangana ary de elah zany namanay fa izahay tsy ampy iray.
+
+<h3> ✰ Après 1 heure</h3>
+
+<mi>Miora</mi> : Eeeh, misasa dia  mody am'zay fa hariva ô
+<br>
+<kel>Kelvin</kel> : Mody am'zay hoe,,, Resy ô, resy lisany ô (avec tout les amis) 
+
+<h3>✰ Hariva ao an-trano</h3>
+
+<av>Avel</av>: Mama a, Tohizo am'zay ny tohiny tantara omaly iny,
+<br>
+<mi>Miora</mi> : Ampio kitay ary aloha ity afo ity,,,, zay de mpetraka de mihainoa tsara,,, 
+Tany aloha be tany hono a de rakotra ala ity toerana ipetrahantsika ity,,,,,,,, 
+<div class="projector">
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<button class="histo">✰ 15 ans plus tard</button>
+
+<br>
+<br>
+<br>
+<br>
+<av>Avel</av>, <ma>Mavie</ma>: Hijery baolina any Maroomby izay ry Dada avy eo. 
+<br>
+<bi>Dada Bruno</bi>: Ataovy dahola aloha ireo raha raha ireo zay voa mandeha a
+<br>
+<ai>Neny Aïsha</ai>: Aza hariva any nareo fa lalana iny tsy Mazavazava a !
+<br>
+
+<av>Avel</av>: Aho manka “Lion FC“, de ampina 2 sotro ny variny izany mandresy, sahy ve?
+<br>
+<ma>Mavie</ma>: Poinse zany e, tena Am-piko 2 fanampiny nenlah raha mandresy joueur mba alainlah io 
+
+<h3>✰ Après le match</h3>
+
+<av>Avel</av>: Mavie, Mavie, firy scores hahaha, resy roa hahaha,
+<br>
+<ma>Mavie</ma> : Andao hody fa hariva ka, Tsy te hijery ny fanolorana ny coupe intsony aho, Sady bedy aty fa Andao.
+<br>
+<av>Avel</av> :Oay,, Sady i Nerio niteny hoe :<< misy lolo vokatra iny lalana mody  iny, sa mpamosavy>>, Aaaa gogogogo. 
+
+<h3>✰ Maizimaizina eny andalana.</h3>
+
+<av>Avel</av> : Mba miadamiadana moa fa lalana miankatra be ity, sepotra aho,,,
+<br>
+<ma>Mavie</ma> : aaaa, ndao malaky fa alina aty, bedy aty
+<br>
+<av>Avel</av> : Mavie, Hotrany maheno foen-javatra hafahafa anie ayha,,, Zany,, mijanona kely anie e,, 
+Ndao andositra haingana, zay ary ny  mpamosavy angamba , Andriamanitra ô, Aza hitako anie ka,,,
+<br>
+<ma>Mavie</ma> : Vonjeo e ee
+<br>
+<av>Avel</av> : Letie, Aza miantsoantso fa vao maika renyyyy,,, Ndao aty aloha haingana.
+
+<h3>✰ Arrivés</h3>
+
+<ma>Mavie</ma> : Toktoktoktoktok, ye tsy miteniteny hoe nisy zavatra hafahafa tany fa mahazo amin'ny zareo a.
+<br>
+<av>Avel</av> : Enn, haiko zany.
+<br>
+<ai>Aïsha</ai> : fa taiza foana nareo vo zay vo tonga, mamptaintaina mihitsy.
+<br>
+<ma>Mavie</ma> : ka hariva be vao nanomoboka ny mutch tao, de mbola tsy vita ary no zahay nody avy tany.
+<br>
+<ai>Aïsha</ai>: Eny e, fa mitandrema ihany.
+<br>
+<bi>Bruno</bi>: Efa vita ao  hoano  ny varinareo fa manara,, de matory fa mampitabataba alina eto Fotsiny. Zay fa hatory zahay.
+<br>
+<ma>Mavie</ma> : Bon8 Papa sy Mama.
+<br>
+<bi>Bruno</bi>: fa izao Rankizy a! Saika hadinoko : Ndeha hiankatra hamonjy ny asako vao maraina be any andrenivotra aho de mety tsy ho tratran areo maraina intsony,, Hendre tsara de karakarao tsara ny tanàna mandrampiditra nareo amin'ny Fidirana.
+Zay ,,
+<br>
+<av>Avel</av>, Mavie : yôô , bon voyage.
+<br>
+
+<ma>Mavie</ma> : Ao am'zay zany apiko vari'nlah.
+<br>
+<av>Avel</av> : Aaaa, aok'zao, yah ary tsy te hihinana hanina mihitsy Mieritreritra an'ilay teny andalana teo. Aona tokoa moa zany raha no savihin'ny mpamosavy sy tany.
+<br> 
+<ma>Mavie</ma> : siiii, hoano ny vary.
+<br>
+<av>Avel</av>: Raha nitazotazona ny sofiko roa teo aloha de tazomiko koa ny nonony roa, hhh.
+<br>
+<ma>Mavie</ma> : kkkkk, Refa ho lasa gaigy tsy milaza, Bon8 elah fa hatory aho, kkkk. 
+
+
+<h3>✰ Demain</h3>
+
+<ps>Pasteur Mahefa</ps>: Miomana fa efa tonga ao ny taxi brousse hitondra Atsika. Tendremo soa misy hadino a.
+<br> 
+<ml>Maëlle</ml>: De handeha ve isika ry dada, de ilaozana eto aby zany ny namako be dia be.
+<br>
+<mi>Miora</mi> : Ao fa tonga any ndry mahita namana vaovao sady mafinaritra.
+<br>
+<ri>Riyan</ri> : ity ny saribakolin'Ndry hoento zandry a, de Andao handeha a.
+<br>
+<mi>Miora</mi>: Ao fa zaho hanidy ny trano, Ndao.
+<br>
+<ps>Mahefa</ps> : lasa isika a ! 
+
+<h3>✰ Autre</h3>
+
+<av>Avel</av>: Hummm, maraina sahady ve letsy ! Fshufshu, Ary fofon'inona ary zany manimanitra hafahafa vao maraina izany? Tsy mba fofon-dranomanitra ampiasan'ny ato an-trano mihitsy zany.
+
+<h3>✰ Messager Kting</h3>
+<mk>Mikalo</mk> : Bonjour
+<br>
+<av>Avel</av> : Bonjour, fa iza kay azafady ?
+<br>
+<mk>Mikalo</mk> : Ho fantatrao foana aho refa mihaona isika.
+<br>
+
+<av>Avel</av> : Zay indray le fofona manitra, Uouonmmmm.
+<br>
+
+<ma>Mavie</ma> : Bonjour elah, mandeha ao @ Mama hoa elah fa hirahiny mividy laoka eny an-tsena.
+<br>
+<av>Avel</av> : Yes,, tena Mety mihitsy zay, sady misy zavatra ho jereko koa eny.
+<br>
+<ma>Mavie</ma> : sipa indray zay zao,,,
+
+<h3>✰ Au marché</h3>
+
+<nr>Nerio</nr> : Salut ny akama,
+<br>
+<av>Avel</av>: Ra Nerio,
+<br>
+<nr>Nerio</nr> : Nareo tsy hita hita mihitsy a, Ndao indray hamitana eny ankidona Aprèm.
+<br>
+<av>Avel</av> : Aprem'Mandalova aminay ao zany de antsoy rehefa  handeha,,, izay.
+<br>
+<nr>Nerio</nr> : Ok Rall.
+<br>
+
+<ps>Mahefa</ps> : Salama tompoko !
+<br>
+<av>Avel</av> : Salama ô,  Mr ????
+<br>
+<ps>Mahefa</ps> : Pasteur Mahefa no anarako e, Saika Hanotany hoe; aiza Hoaiza eto Fandriana no misy ny Fiangonana Fjkm Mahomby zao
+<br>
+<av>Avel</av> : Enn, Tsy lavitra fa eny @  misy anay ankaiky eo fotsiny , Raha afaka mitondra ahy ianao de miaraka tonga eny isika,
+<br>
+<ps>Mahefa</ps> : Tsy olona ka, miankara
+<br>
+<av>Avel</av> : Ok, ,Ennn, Salama ô.
+<br>
+<ml>Maëlle</ml>, <ri>Ryian</ri> : Salut,
+<br>
+<mi>Miora</mi> : Aona letsy,,Ary elah hotrany hoe olona efa no hitako izany ?
+<br>
+<av>Avel</av> : C'était pas possible, Mety olona hafa izany ngamba.
+<br>
+<av>Avel</av> : Io le Fiangonana,  eto ngamba yah  no mijanona koa, atsy ambadika atsy mantsy no misy anay.
+<br>
+<mi>Miora</mi> : Misaotra letsy a !
+
+<h3>✰ An-trano</h3>
+
+<nr>Nerio</nr>: chuii, Ndao hi-pas.
+<br>
+<av>Avel</av> : Ewa,,,,, Vo hangady kakana aho.
+<br>
+<nr>Nerio</nr> : Efa misy betsaka ato fa Ndao handeha,
+<br>
+<ma>Mavie</ma> : itondrao rambony, hhh
+<br>
+<nr>Nerio</nr> : Rambon'inona ?
+<br>
+<ma>Mavie</ma> : hahaha, bonne chance, lisany fa tsyyy. 
+
+<h3>✰ Ankidona</h3>
+
+<av>Avel</av> : Nahazo firy letsy,
+<br>
+<nr>Nerio</nr> : vao telo,,,
+<br>
+<av>Avel</av> : Ny ahy ary iray, sady kely be,,,
+Hum, zay indray le ranomanitra, Henon'ialahy ve letsy zany,
+<br>
+<nr>Nerio</nr> : Aaa, fa hotrany tsisy trondro mihinana mihitsy a.
+<br>
+<av>Avel</av> : Aleo ilaozako kely eto ity aloha,
+[Fa inona koa ary iry zavatra manjelatra anaty hazo amin'ny sisin-drano iry] ? Mba  jerijereo kely io letsy.
+<br>
+<nr>Nerio</nr> : fa hoa lty elaha ?
+<br>
+<av>Avel</av> : misy zavatra ho jereko etsy am-pita etsy. [Tena avy aty mihitsy le fofona rano manitra, sao dia mba vato ary io,,,]
+
+<h3>✰ Messenger Kting</h3>
+
+<mk>Mikalo</mk> : Mandehana ihany enao mandrapahatonga ankaikin'ny tetezana io fa misy zavatra ilaiko anao.
+<br>
+<av>Avel</av> : Fa iza ary inao ty e ? ,,,,Aaaa, hotra lasa matahotra anefa aho zany. Sady tsy eo intsony ilay zavatra najelatre teto, Iry ambany tetezana simba iry koa zao misy iray, sady lehibe noho ilay teto iny,,,Kting?
+<br>
+<mk>Mikalo</mk> : Efa kely sisa elaha de tonga, mandroso ihany.
+<br>
+<av>Avel</av> : Tsy Mazavazava mihitsy ity ka, de aona nefa io raha vatosoa ,,, tena efa mihetsiketsika mihitsy ny hodidohako ato, Sady maloka tampoka teo koa ny andro ity, Aleo miverina fa misy lolo mihitsy ngamba aty,,,,, Hummm, Tena avy aty mihitsy ilay fofona ranomanitra, Aaa, Aleo mankeny ihany manka an'io vato io de miverina haingana avy eo,,,,
+</div>
+<br>
+<br>
+
+<u><i><p><b>FIFALIANTSOA Jean Fréderic, 30 october 2024</b></p></i></u>
+<br>
+<form action="http://localhost:8080/FilmeSerie_S1_Ep2.html" method="get" target="_blank">
+            <br>
+            <button class="Saison">
+            Regarder la Saison 1 Épisode 2➡️
+            <input value="Play" type="submit"></input>            
+            </form>
+            </button>       
+<br>
+<img class="img2" src="Facebook1.jpg"> <a href="https://www.facebook.com">@Avel, @Jhamaïka, @Mylaine_offisialy</a>
+<br>
+<br>
+<img class="img2" src="Tiktok.jpg"> <a href="https://www.facebook.com">@Mylaine_offisialy</a>
+<br>
+<br>
+<img class="img2" src="instagram.jpg"> <a href="https://www.facebook.com">@Avel</a>
+<br>
+<br>
+<img class="img2" src="Threads.jpg"> <a href="https://www.facebook.com">@Avel</a>
+<br>
+<br>
+<b>Suivez-nous pour voir la suite!
+</br>
+<br>
+<br>
+<center>
+<button class="button1" onclick="goBack()">Retour</button></center>
+
+    <script>
+        function goBack() {
+            // Vérifie si une page précédente existe dans l'historique
+            if (window.history.length > 1) {
+                window.history.back(); // Retourne à la page précédente
+            } else {
+                alert("Aucune page précédente disponible !");
+            }
+        }
+    </script>
+<footer>
+    <h4> &copy 30 Octobre 2024
+</h4></footer>
+</body>
+</html>
